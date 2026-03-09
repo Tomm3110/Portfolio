@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio - Tom FIRMIN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { heading: ['Playfair Display', 'serif'], sans: ['DM Sans', 'sans-serif'] },
+                    colors: {
+                        bg: { main: '#18181b', card: '#27272a', lighter: '#3f3f46' },
+                        text: { primary: '#f4f4f5', secondary: '#a1a1aa' },
+                        accent: { DEFAULT: '#a855f7', hover: '#c084fc', faded: 'rgba(168, 85, 247, 0.1)' }
+                    },
+                    boxShadow: { 'glow': '0 0 20px -5px rgba(168, 85, 247, 0.3)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        #menu-toggle:checked ~ .mobile-nav { transform: translateX(0); }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #18181b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+    </style>
+</head>
+
+<body class="bg-bg-main text-text-secondary font-sans antialiased selection:bg-accent selection:text-white overflow-x-hidden flex flex-col min-h-screen">
+
+<header class="fixed top-0 z-50 w-full flex justify-between items-center py-4 px-6 md:px-12 bg-bg-main/80 backdrop-blur-md border-b border-bg-lighter/20 transition-all duration-300">
+
+    <a href="http://localhost:8000" class="text-text-primary font-heading text-3xl font-black tracking-wider z-50 hover:text-accent transition">
+        Tom FIRMIN
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="hidden peer">
+
+    <label for="menu-toggle" class="md:hidden cursor-pointer z-50 p-2 group space-y-1.5">
+        <span class="block w-8 h-0.5 bg-text-primary transition group-hover:bg-accent ml-auto"></span>
+        <span class="block w-6 h-0.5 bg-text-primary transition group-hover:bg-accent ml-auto"></span>
+        <span class="block w-8 h-0.5 bg-text-primary transition group-hover:bg-accent ml-auto"></span>
+    </label>
+
+    <nav class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-widest text-text-primary">
+        <a href="http://localhost:8000#about" class="relative group overflow-hidden pb-1 hover:text-accent transition">
+            <span>About</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="http://localhost:8000#skills" class="relative group overflow-hidden pb-1 hover:text-accent transition">
+            <span>Skills</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="http://localhost:8000#experience" class="relative group overflow-hidden pb-1 hover:text-accent transition">
+            <span>Experience</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="http://localhost:8000#work" class="relative group overflow-hidden pb-1 hover:text-accent transition">
+            <span>Projects</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <div class="flex items-center gap-3 border-l border-bg-lighter/30 pl-4">
+            <a href="http://localhost:8000/lang/fr" class="text-lg transition hover:scale-110 opacity-40 hover:opacity-100">🇫🇷</a>
+            <a href="http://localhost:8000/lang/en" class="text-lg transition hover:scale-110 opacity-100">🇬🇧</a>
+        </div>
+
+        <a href="http://localhost:8000/cv.pdf" target="_blank" class="bg-accent hover:bg-accent-hover text-white px-5 py-2 rounded-full transition shadow-lg shadow-accent/20 font-bold text-xs ml-2">
+            My Resume
+        </a>
+    </nav>
+
+    <label for="menu-toggle" class="hidden peer-checked:block fixed inset-0 bg-black/60 backdrop-blur-sm z-30 md:hidden h-screen w-screen top-0 left-0"></label>
+
+    <nav class="mobile-nav fixed top-0 right-0 h-screen w-4/5 max-w-sm bg-bg-card flex flex-col justify-center items-center transform translate-x-full transition-transform duration-300 shadow-2xl z-40 md:hidden border-l border-bg-lighter/30">
+        <label for="menu-toggle" class="absolute top-6 right-8 text-text-primary text-4xl cursor-pointer hover:text-accent">&times;</label>
+
+        <ul class="flex flex-col space-y-6 font-heading text-2xl text-center text-text-primary">
+            <li><a href="http://localhost:8000#about" onclick="document.getElementById('menu-toggle').checked = false;" class="hover:text-accent transition">About</a></li>
+            <li><a href="http://localhost:8000#skills" onclick="document.getElementById('menu-toggle').checked = false;" class="hover:text-accent transition">Skills</a></li>
+            <li><a href="http://localhost:8000#experience" onclick="document.getElementById('menu-toggle').checked = false;" class="hover:text-accent transition">Experience</a></li>
+            <li><a href="http://localhost:8000#work" onclick="document.getElementById('menu-toggle').checked = false;" class="hover:text-accent transition">Projects</a></li>
+        </ul>
+
+        <div class="flex items-center gap-6 mt-8 mb-8">
+            <a href="http://localhost:8000/lang/fr" class="text-3xl transition opacity-40">🇫🇷</a>
+            <a href="http://localhost:8000/lang/en" class="text-3xl transition opacity-100 scale-110">🇬🇧</a>
+        </div>
+
+        <a href="http://localhost:8000/cv.pdf" target="_blank" class="bg-accent hover:bg-accent-hover text-white px-8 py-3 rounded-full font-bold transition shadow-glow">
+            Download Resume
+        </a>
+    </nav>
+</header>
+
+<main class="flex-grow">
+    <div class="pt-32 pb-20 px-6 md:px-12 lg:px-24 max-w-[1000px] mx-auto">
+
+        <a href="http://localhost:8000#work" class="inline-flex items-center gap-2 text-text-secondary hover:text-accent transition mb-8 font-bold text-sm uppercase tracking-widest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to home
+        </a>
+
+        <span class="text-accent font-bold tracking-widest uppercase block mb-2">PHP / Laravel</span>
+        <h1 class="text-4xl md:text-6xl font-heading font-black text-text-primary mb-10 leading-tight">
+            CineHub
+        </h1>
+
+                    <div class="rounded-3xl overflow-hidden mb-12 border border-bg-lighter/30 shadow-2xl relative group">
+                <div class="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-20 transition duration-500"></div>
+                <img src="http://localhost:8000/storage/projects/cinehub-home.png" alt="CineHub" class="w-full object-cover">
+            </div>
+        
+        <div class="prose prose-invert prose-lg max-w-none text-text-secondary leading-relaxed">
+            <p class="text-xl text-text-primary font-medium mb-8">
+                Major team web development project. Design of a complete dynamic application using MVC architecture. Used Git for collaboration, Laravel for the backend, and modern HTML/CSS integration.
+            </p>
+        </div>
+
+                    <div class="mt-16 mb-12">
+                
+                <h2 class="text-2xl font-heading font-bold text-text-primary mb-8 flex items-center gap-3 before:h-px before:flex-grow before:bg-bg-lighter/30 after:h-px after:flex-grow after:bg-bg-lighter/30">
+                    Photo Gallery
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div class="rounded-2xl overflow-hidden border border-bg-lighter/30 shadow-lg relative group">
+                            <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                            <img src="http://localhost:8000/storage/projects/cinehub-films.png"
+                                 alt="Galerie CineHub"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        </div>
+                                            <div class="rounded-2xl overflow-hidden border border-bg-lighter/30 shadow-lg relative group">
+                            <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                            <img src="http://localhost:8000/storage/projects/cinehub-edit.png"
+                                 alt="Galerie CineHub"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        </div>
+                                            <div class="rounded-2xl overflow-hidden border border-bg-lighter/30 shadow-lg relative group">
+                            <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                            <img src="http://localhost:8000/storage/projects/cinehub-add.png"
+                                 alt="Galerie CineHub"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        </div>
+                                            <div class="rounded-2xl overflow-hidden border border-bg-lighter/30 shadow-lg relative group">
+                            <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                            <img src="http://localhost:8000/storage/projects/cinehub-login.png"
+                                 alt="Galerie CineHub"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                        </div>
+                                    </div>
+            </div>
+        
+        <div class="flex flex-wrap gap-4 mt-12 pt-8 border-t border-bg-lighter/30">
+                            <a href="https://github.com/Tomm3110/CineHub" target="_blank" class="bg-bg-card hover:bg-bg-lighter border border-bg-lighter text-text-primary px-6 py-3 rounded-full font-bold transition flex items-center gap-2">
+                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View on GitHub
+                </a>
+            
+                    </div>
+    </div>
+</main>
+
+<footer class="bg-bg-card py-12 mt-24 border-t border-bg-lighter/30 text-center relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10"></div>
+
+    <a href="http://localhost:8000" class="font-heading text-2xl font-bold text-text-primary tracking-wider hover:text-accent transition">TF</a>
+
+    <div class="flex justify-center gap-6 mt-6 mb-8">
+        <a href="https://github.com/Tomm3110" target="_blank" class="text-text-secondary hover:text-accent transition transform hover:scale-110">GitHub</a>
+        <a href="https://www.linkedin.com/in/tom-firmin-1ab18a29b/" target="_blank" class="text-text-secondary hover:text-accent transition transform hover:scale-110">LinkedIn</a>
+    </div>
+
+    <p class="text-sm opacity-60">
+        developed_with Laravel & Tailwind · Designed by Tom FIRMIN · © 2026
+    </p>
+</footer>
+
+</body>
+</html>

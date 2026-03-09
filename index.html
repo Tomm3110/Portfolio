@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio - Tom FIRMIN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { heading: ['Playfair Display', 'serif'], sans: ['DM Sans', 'sans-serif'] },
+                    colors: {
+                        bg: { main: '#18181b', card: '#27272a', lighter: '#3f3f46' },
+                        text: { primary: '#f4f4f5', secondary: '#a1a1aa' },
+                        accent: { DEFAULT: '#a855f7', hover: '#c084fc', faded: 'rgba(168, 85, 247, 0.1)' }
+                    },
+                    boxShadow: { 'glow': '0 0 20px -5px rgba(168, 85, 247, 0.3)' }
+                }
+            }
+        }
+    </script>
+    <style>
+        #menu-toggle:checked ~ .mobile-nav { transform: translateX(0); }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #18181b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+    </style>
+</head>
+
+<body class="bg-bg-main text-text-secondary font-sans antialiased selection:bg-accent selection:text-white overflow-x-hidden flex flex-col min-h-screen">
+
+<header class="fixed top-0 z-50 w-full flex justify-between items-center py-4 px-6 md:px-12 bg-bg-main/80 backdrop-blur-md border-b border-bg-lighter/20 transition-all duration-300">
+
+    <a href="http://localhost:8000" class="text-text-primary font-heading text-3xl font-black tracking-wider z-50 hover:text-accent transition">
+        Tom FIRMIN
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="hidden peer">
+
+    <label for="menu-toggle" class="md:hidden cursor-pointer z-50 p-2 group space-y-1.5">
+        <span class="block w-8 h-0.5 bg-text-primary transition group-hover:bg-accent ml-auto"></span>
+        <span class="block w-6 h-0.5 bg-text-primary transition group-hover:bg-accent ml-auto"></span>
+        <span class="block w-8 h-0.5 bg-text-primary transition group-hover:bg-accent ml-auto"></span>
+    </label>
+
+    <nav class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-widest text-text-primary">
+        <a href="http://localhost:8000#about" class="relative group overflow-hidden pb-1 hover:text-accent transition">
+            <span>À propos</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="http://localhost:8000#skills" class="relative group overflow-hidden pb-1 hover:text-accent transition">
+            <span>Compétences</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="http://localhost:8000#experience" class="relative group overflow-hidden pb-1 hover:text-accent transition">
+            <span>Expériences</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="http://localhost:8000#work" class="relative group overflow-hidden pb-1 hover:text-accent transition">
+            <span>Projets</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <div class="flex items-center gap-3 border-l border-bg-lighter/30 pl-4">
+            <a href="http://localhost:8000/lang/fr" class="text-lg transition hover:scale-110 opacity-100">🇫🇷</a>
+            <a href="http://localhost:8000/lang/en" class="text-lg transition hover:scale-110 opacity-40 hover:opacity-100">🇬🇧</a>
+        </div>
+
+        <a href="http://localhost:8000/cv.pdf" target="_blank" class="bg-accent hover:bg-accent-hover text-white px-5 py-2 rounded-full transition shadow-lg shadow-accent/20 font-bold text-xs ml-2">
+            Mon CV
+        </a>
+    </nav>
+
+    <label for="menu-toggle" class="hidden peer-checked:block fixed inset-0 bg-black/60 backdrop-blur-sm z-30 md:hidden h-screen w-screen top-0 left-0"></label>
+
+    <nav class="mobile-nav fixed top-0 right-0 h-screen w-4/5 max-w-sm bg-bg-card flex flex-col justify-center items-center transform translate-x-full transition-transform duration-300 shadow-2xl z-40 md:hidden border-l border-bg-lighter/30">
+        <label for="menu-toggle" class="absolute top-6 right-8 text-text-primary text-4xl cursor-pointer hover:text-accent">&times;</label>
+
+        <ul class="flex flex-col space-y-6 font-heading text-2xl text-center text-text-primary">
+            <li><a href="http://localhost:8000#about" onclick="document.getElementById('menu-toggle').checked = false;" class="hover:text-accent transition">À propos</a></li>
+            <li><a href="http://localhost:8000#skills" onclick="document.getElementById('menu-toggle').checked = false;" class="hover:text-accent transition">Compétences</a></li>
+            <li><a href="http://localhost:8000#experience" onclick="document.getElementById('menu-toggle').checked = false;" class="hover:text-accent transition">Expériences</a></li>
+            <li><a href="http://localhost:8000#work" onclick="document.getElementById('menu-toggle').checked = false;" class="hover:text-accent transition">Projets</a></li>
+        </ul>
+
+        <div class="flex items-center gap-6 mt-8 mb-8">
+            <a href="http://localhost:8000/lang/fr" class="text-3xl transition opacity-100 scale-110">🇫🇷</a>
+            <a href="http://localhost:8000/lang/en" class="text-3xl transition opacity-40">🇬🇧</a>
+        </div>
+
+        <a href="http://localhost:8000/cv.pdf" target="_blank" class="bg-accent hover:bg-accent-hover text-white px-8 py-3 rounded-full font-bold transition shadow-glow">
+            Télécharger mon CV
+        </a>
+    </nav>
+</header>
+
+<main class="flex-grow">
+    <style>
+        :root {
+            --color-deep-black: #020205;
+            --color-main-bg: #18181b;
+        }
+
+        .fluid-breath { animation: breath 8s ease-in-out infinite alternate; }
+        @keyframes breath {
+            0% { transform: scale(1) translateY(0); opacity: 0.8; }
+            100% { transform: scale(1.1) translateY(-20px); opacity: 1; }
+        }
+        .particles {
+            background-image: radial-gradient(#ffffff 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at 30% 50%, black, transparent 70%);
+        }
+
+        .cursor-none { cursor: none; }
+        .custom-cursor-dot {
+            position: fixed; top: 0; left: 0; width: 8px; height: 8px;
+            background-color: white; border-radius: 50%; pointer-events: none; z-index: 9999;
+            mix-blend-mode: difference; transition: opacity 0.3s ease;
+        }
+        .custom-cursor-glow {
+            position: fixed; top: 0; left: 0; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+            border-radius: 50%; pointer-events: none; z-index: 9998;
+            transform: translate(-50%, -50%); transition: opacity 0.3s ease, transform 0.15s ease-out;
+            mix-blend-mode: screen; filter: blur(20px);
+        }
+        .cursor-hidden { opacity: 0 !important; }
+
+        .site-background-container {
+            position: fixed; inset: 0; z-index: -5; pointer-events: none;
+        }
+        .bg-grid-pattern {
+            background-size: 50px 50px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+        #mouse-spotlight {
+            background: radial-gradient(800px circle at center, rgba(168, 85, 247, 0.15), transparent 40%);
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        #scroll-progress { width: 0%; height: 3px; background: linear-gradient(90deg, #6366f1, #a855f7); position: fixed; top: 0; left: 0; z-index: 9999; transition: width 0.1s; }
+    </style>
+
+    <div id="scroll-progress"></div>
+
+    <div id="cursor-dot" class="custom-cursor-dot cursor-hidden"></div>
+    <div id="cursor-glow" class="custom-cursor-glow cursor-hidden"></div>
+
+    <div class="site-background-container">
+        <div id="mouse-spotlight" class="absolute inset-0 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+    </div>
+
+    
+    
+    
+    <section id="hero-section" class="relative z-10 min-h-screen w-full flex items-center overflow-hidden px-6 md:px-12 lg:px-24 cursor-none" style="background-color: var(--color-deep-black);">
+
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden z-0">
+            <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[80vh] bg-blue-600/40 rounded-full blur-[100px] fluid-breath" style="animation-delay: 0s;"></div>
+            <div class="absolute top-[20%] left-[5%] w-[40vw] h-[60vh] bg-purple-600/40 rounded-full blur-[90px] fluid-breath" style="animation-delay: -2s;"></div>
+            <div class="absolute top-[40%] left-[-5%] w-[35vw] h-[50vh] bg-fuchsia-600/30 rounded-full blur-[80px] fluid-breath" style="animation-delay: -4s;"></div>
+            <div class="absolute inset-0 particles opacity-30"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="hidden lg:block"></div>
+            <div class="text-center lg:text-right flex flex-col items-center lg:items-end">
+                <p class="reveal text-blue-200 font-medium tracking-[0.3em] uppercase mb-8 text-xs md:text-sm opacity-80">
+                    Développeur Fullstack <span class="text-text-secondary mx-2">•</span> IUT de Lens
+                </p>
+                <h1 class="reveal delay-100 font-heading font-black text-5xl md:text-7xl lg:text-8xl text-white mb-8 tracking-[0.15em] leading-tight drop-shadow-2xl">
+                    <span class="block">Imaginer.</span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-fuchsia-400">Concevoir.</span>
+                    <span class="block">Développer.</span>
+                </h1>
+                <p class="reveal delay-200 text-gray-400 text-base md:text-lg max-w-xl mb-12 leading-relaxed font-light tracking-wide lg:ml-auto">
+                    Actuellement en 2ème année de BUT Informatique. Je transforme des problèmes complexes en interfaces simples et performantes.
+                </p>
+                <div class="reveal delay-300 flex flex-wrap justify-center lg:justify-end gap-6">
+                    <a href="#work" class="px-8 py-3 rounded-full bg-white text-black font-bold text-sm tracking-widest hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">Voir mes réalisations</a>
+                    <a href="#contact" class="px-8 py-3 rounded-full border border-white/30 text-white font-bold text-sm tracking-widest hover:bg-white/10 transition-colors">Me contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="relative z-10 w-full h-32 bg-gradient-to-b from-[var(--color-deep-black)] to-transparent pointer-events-none"></div>
+
+    <div class="relative z-0">
+
+        
+        <section id="about" class="py-24 px-6 md:px-12 lg:px-24 max-w-[1000px] mx-auto">
+            <h2 class="reveal text-4xl md:text-5xl font-heading font-bold text-text-primary mb-12 text-center flex items-center justify-center gap-4">
+                <span class="w-12 h-1 bg-accent rounded-full inline-block"></span>
+                À propos de moi
+                <span class="w-12 h-1 bg-accent rounded-full inline-block"></span>
+            </h2>
+            <div class="reveal delay-100 bg-bg-card/30 backdrop-blur-sm border border-bg-lighter/20 p-8 md:p-12 rounded-3xl shadow-xl space-y-8 text-lg leading-relaxed text-text-secondary text-justify">
+                <p>Actuellement étudiant en <strong>2ème année de BUT Informatique à l'IUT de Lens</strong>, mon cursus me permet d'allier une base théorique solide à une pratique intensive.</p>
+                <div class="pl-6 border-l-4 border-accent italic text-text-primary bg-accent/5 p-4 rounded-r-xl">"Ce qui me passionne ? <strong>La résolution de problèmes.</strong> Que ce soit en backend avec PHP/Laravel ou en frontend, j'aime construire des applications propres et centrées sur l'utilisateur."</div>
+                <p>Au-delà du code, ma formation m'apprend la rigueur des méthodes Agiles (Scrum) et le travail en équipe. Je suis curieux de nature et je passe une grande partie de mon temps libre à effectuer une veille technologique.</p>
+            </div>
+        </section>
+
+        
+        <section id="skills" class="py-24 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
+            <h2 class="reveal text-4xl md:text-5xl font-heading font-bold text-text-primary mb-16 flex items-center gap-4">
+                <span class="w-12 h-1 bg-accent rounded-full inline-block"></span>
+                Mes Compétences
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-start">
+                                    <div class="reveal delay-100 bg-bg-card/20 border border-bg-lighter/20 rounded-2xl p-6 hover:bg-bg-card/40 transition-colors duration-500">
+                        <h3 class="text-xl font-heading font-bold text-accent mb-6 uppercase tracking-widest border-b border-bg-lighter/30 pb-2">Backend</h3>
+                        <div class="flex flex-wrap gap-3">
+                             <button
+    onclick="openModal('Laravel', 'Utilisé pour concevoir des applications web complètes (MVC). J\&#039;exploite Eloquent pour la gestion de données complexe et l\&#039;authentification pour sécuriser mes projets de SAÉ.', 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg" alt="Laravel" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        Laravel
+    </span>
+</button>
+  <button
+    onclick="openModal('PHP', 'Langage cœur de mon développement back-end. Je l\&#039;utilise en Orienté Objet pour structurer la logique métier et garantir un code maintenable et modulaire.', 'https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        PHP
+    </span>
+</button>
+  <button
+    onclick="openModal('Java', 'Langage pivot de ma formation à l\&#039;IUT. C\&#039;est avec lui que j\&#039;ai acquis les concepts solides de la Programmation Orientée Objet (POO), l\&#039;héritage et les structures de données algorithmiques.', 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        Java
+    </span>
+</button>
+  <button
+    onclick="openModal('Python', 'Mon outil de choix pour l\&#039;automatisation de scripts et le traitement de données. Utilisé également dans des contextes algorithmiques avancés.', 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        Python
+    </span>
+</button>
+  <button
+    onclick="openModal('Flask', 'Mis en œuvre pour créer un site de quiz interactif sur les cocktails. J\&#039;ai utilisé ce micro-framework pour gérer le routage et consommer une API externe existante (récupération et traitement des données JSON).', 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg" alt="Flask" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        Flask
+    </span>
+</button>
+                         </div>
+                    </div>
+                                    <div class="reveal delay-100 bg-bg-card/20 border border-bg-lighter/20 rounded-2xl p-6 hover:bg-bg-card/40 transition-colors duration-500">
+                        <h3 class="text-xl font-heading font-bold text-accent mb-6 uppercase tracking-widest border-b border-bg-lighter/30 pb-2">Frontend</h3>
+                        <div class="flex flex-wrap gap-3">
+                             <button
+    onclick="openModal('Tailwind CSS', 'Indispensable pour l\&#039;intégration responsive. Il me permet de transformer une maquette en interface fonctionnelle très rapidement, sans quitter mon HTML.', 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        Tailwind CSS
+    </span>
+</button>
+  <button
+    onclick="openModal('HTML', 'Structure principale de mes pages. Je veille au respect des normes d\&#039;accessibilité et au bon référencement naturel.', 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        HTML
+    </span>
+</button>
+  <button
+    onclick="openModal('CSS', 'Maîtrise des layouts modernes (Flexbox, Grid) et des animations pour créer des interfaces fluides et agréables à utiliser.', 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        CSS
+    </span>
+</button>
+                         </div>
+                    </div>
+                                    <div class="reveal delay-100 bg-bg-card/20 border border-bg-lighter/20 rounded-2xl p-6 hover:bg-bg-card/40 transition-colors duration-500">
+                        <h3 class="text-xl font-heading font-bold text-accent mb-6 uppercase tracking-widest border-b border-bg-lighter/30 pb-2">Database</h3>
+                        <div class="flex flex-wrap gap-3">
+                             <button
+    onclick="openModal('MySQL', 'Conception de schémas (MCD/MLD). Je suis capable d\&#039;écrire des requêtes complexes (jointures, sous-requêtes) et d\&#039;optimiser les performances.', 'https://labs.mysql.com/common/logos/mysql-logo.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://labs.mysql.com/common/logos/mysql-logo.svg" alt="MySQL" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        MySQL
+    </span>
+</button>
+  <button
+    onclick="openModal('SQLite', 'Solution que je privilégie pour le développement local, les tests unitaires ou les applications embarquées nécessitant zéro configuration.', 'https://upload.wikimedia.org/wikipedia/commons/3/38/SQLite370.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/SQLite370.svg" alt="SQLite" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        SQLite
+    </span>
+</button>
+                         </div>
+                    </div>
+                                    <div class="reveal delay-100 bg-bg-card/20 border border-bg-lighter/20 rounded-2xl p-6 hover:bg-bg-card/40 transition-colors duration-500">
+                        <h3 class="text-xl font-heading font-bold text-accent mb-6 uppercase tracking-widest border-b border-bg-lighter/30 pb-2">Tools</h3>
+                        <div class="flex flex-wrap gap-3">
+                             <button
+    onclick="openModal('Git', 'Pilier de mon travail d\&#039;équipe en méthode Agile. Je gère les branches, les pull requests et la résolution de conflits au quotidien.', 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg" alt="Git" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        Git
+    </span>
+</button>
+  <button
+    onclick="openModal('BASH', 'Utilisation quotidienne de la ligne de commande Linux pour naviguer, gérer les droits d\&#039;accès et automatiser des tâches récurrentes.', 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg" alt="BASH" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        BASH
+    </span>
+</button>
+  <button
+    onclick="openModal('VS Code', 'Mon IDE principal. Optimisé avec des extensions pour le débogage et la gestion de Git intégrée.', 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg')"
+    class="group flex items-center gap-3 px-5 py-2.5 bg-bg-card rounded-full border border-bg-lighter/50 hover:border-accent transition-all duration-300 hover:shadow-glow hover:-translate-y-1 text-left"
+>
+            <div class="w-5 h-5 flex items-center justify-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg" alt="VS Code" class="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition">
+        </div>
+    
+    <span class="text-sm font-medium text-text-primary group-hover:text-accent transition cursor-pointer">
+        VS Code
+    </span>
+</button>
+                         </div>
+                    </div>
+                            </div>
+        </section>
+
+        
+        <section id="experience" class="py-32 px-6 md:px-12 lg:px-24 max-w-[1000px] mx-auto">
+            <div class="reveal bg-bg-card/30 backdrop-blur-sm rounded-[3rem] p-8 md:p-16 border border-bg-lighter/20 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[80px] pointer-events-none"></div>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-16 text-center">Mes expériences</h2>
+                <div class="space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-accent/50 before:to-transparent">
+                                            <div class="reveal" style="transition-delay: 0s"><div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-bg-card border-2 border-accent shadow-glow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+        <div class="w-3 h-3 bg-accent rounded-full"></div>
+    </div>
+
+    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-bg-card p-6 rounded-2xl border border-bg-lighter/50 shadow-lg transition hover:border-accent/50 flex flex-col gap-2">
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+            <h3 class="text-lg font-bold text-text-primary font-heading">Casino Circus - Le Bizet</h3>
+            <span class="text-xs font-bold text-accent tracking-wide bg-accent/10 px-3 py-1 rounded-full uppercase">
+                Mars 2023 - Octobre 2025
+            </span>
+        </div>
+
+        <p class="text-base font-medium text-text-secondary">Employé Polyvalent (Job Étudiant)</p>
+
+        <button
+            onclick="openExpModal('Employé Polyvalent (Job Étudiant)', 'Casino Circus - Le Bizet', 'Mars 2023 - Octobre 2025', 'exp-desc-1')"
+            class="mt-2 text-sm font-bold text-accent hover:text-white transition flex items-center gap-2 w-fit group-hover:translate-x-1 duration-300"
+        >
+            Voir les missions
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </button>
+
+        <div id="exp-desc-1" class="hidden">
+            <ul>
+                <li>Accueil physique et accompagnement de la clientèle, fidélisation.</li>
+                <li>Gestion opérationnelle de la salle et surveillance des équipements.</li>
+                <li>Responsabilité des opérations d'encaissement et tenue de caisse.</li>
+                <li>Travail en autonomie (Contrat 18h/semaine en parallèle des études).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+                                            <div class="reveal" style="transition-delay: 0.1s"><div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+    <div class="flex items-center justify-center w-10 h-10 rounded-full bg-bg-card border-2 border-accent shadow-glow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+        <div class="w-3 h-3 bg-accent rounded-full"></div>
+    </div>
+
+    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-bg-card p-6 rounded-2xl border border-bg-lighter/50 shadow-lg transition hover:border-accent/50 flex flex-col gap-2">
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+            <h3 class="text-lg font-bold text-text-primary font-heading">Worldline - Seclin</h3>
+            <span class="text-xs font-bold text-accent tracking-wide bg-accent/10 px-3 py-1 rounded-full uppercase">
+                Avril 2020 - Avril 2020
+            </span>
+        </div>
+
+        <p class="text-base font-medium text-text-secondary">Stage d&#039;Observation</p>
+
+        <button
+            onclick="openExpModal('Stage d\&#039;Observation', 'Worldline - Seclin', 'Avril 2020 - Avril 2020', 'exp-desc-2')"
+            class="mt-2 text-sm font-bold text-accent hover:text-white transition flex items-center gap-2 w-fit group-hover:translate-x-1 duration-300"
+        >
+            Voir les missions
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </button>
+
+        <div id="exp-desc-2" class="hidden">
+            <ul>
+                <li>Immersion au sein d'un leader européen des paiements et services transactionnels.</li>
+                <li>Rencontre avec les équipes techniques : Développeurs, Ingénieurs de production, Techniciens.</li>
+                <li>Découverte des enjeux liés à l'hébergement de données sensibles (Données de santé).</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+                                    </div>
+            </div>
+        </section>
+
+        
+        <section id="work" class="py-32 px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto">
+            <h2 class="reveal text-4xl md:text-5xl font-heading font-bold text-text-primary mb-16 flex items-center gap-4">
+                <span class="w-12 h-1 bg-accent rounded-full inline-block"></span>
+                Projets Récents
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                    <div class="reveal hover:scale-[1.02] transition-transform duration-500" style="transition-delay: 0s"><div class="group rounded-3xl overflow-hidden bg-bg-card border border-bg-lighter/50 hover:border-accent/50 transition-all duration-500 hover:shadow-glow flex flex-col">
+    <div class="p-8 flex flex-col flex-grow">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-accent text-sm font-bold tracking-wider uppercase">PHP / Laravel</span>
+                            <a href="https://github.com/Tomm3110/Marathon-du-Web" target="_blank" class="text-text-secondary hover:text-accent transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </a>
+                    </div>
+
+        <h3 class="text-2xl font-heading font-bold text-text-primary mb-4 group-hover:text-accent transition">
+            Marathon du Web
+        </h3>
+
+        <p class="text-text-secondary mb-6 leading-relaxed flex-grow text-sm">
+            Développement d&#039;un blog musical communautaire sur le thème du Disco, réalisé lors d&#039;un hackathon en...
+        </p>
+
+        <a href="http://localhost:8000/projet/marathon-du-web" class="inline-flex items-center gap-2 text-text-primary font-bold group-hover:text-accent transition text-sm">
+            Voir plus
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        </a>
+    </div>
+</div>
+</div>
+                                    <div class="reveal hover:scale-[1.02] transition-transform duration-500" style="transition-delay: 0.1s"><div class="group rounded-3xl overflow-hidden bg-bg-card border border-bg-lighter/50 hover:border-accent/50 transition-all duration-500 hover:shadow-glow flex flex-col">
+    <div class="p-8 flex flex-col flex-grow">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-accent text-sm font-bold tracking-wider uppercase">PHP / Laravel</span>
+                            <a href="https://github.com/Tomm3110/CineHub" target="_blank" class="text-text-secondary hover:text-accent transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </a>
+                    </div>
+
+        <h3 class="text-2xl font-heading font-bold text-text-primary mb-4 group-hover:text-accent transition">
+            CineHub
+        </h3>
+
+        <p class="text-text-secondary mb-6 leading-relaxed flex-grow text-sm">
+            Projet majeur de développement web réalisé en équipe (Méthode Agile). Conception d&#039;une application d...
+        </p>
+
+        <a href="http://localhost:8000/projet/cinehub" class="inline-flex items-center gap-2 text-text-primary font-bold group-hover:text-accent transition text-sm">
+            Voir plus
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        </a>
+    </div>
+</div>
+</div>
+                                    <div class="reveal hover:scale-[1.02] transition-transform duration-500" style="transition-delay: 0.2s"><div class="group rounded-3xl overflow-hidden bg-bg-card border border-bg-lighter/50 hover:border-accent/50 transition-all duration-500 hover:shadow-glow flex flex-col">
+    <div class="p-8 flex flex-col flex-grow">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-accent text-sm font-bold tracking-wider uppercase">Java / Algorithme</span>
+                            <a href="https://github.com/Tomm3110/Jeu-PacMan" target="_blank" class="text-text-secondary hover:text-accent transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </a>
+                    </div>
+
+        <h3 class="text-2xl font-heading font-bold text-text-primary mb-4 group-hover:text-accent transition">
+            Jeu PacMan
+        </h3>
+
+        <p class="text-text-secondary mb-6 leading-relaxed flex-grow text-sm">
+            Développement d&#039;une version révisée du célèbre jeu d&#039;arcade en Java. Architecture logicielle robuste...
+        </p>
+
+        <a href="http://localhost:8000/projet/jeu-pacman" class="inline-flex items-center gap-2 text-text-primary font-bold group-hover:text-accent transition text-sm">
+            Voir plus
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        </a>
+    </div>
+</div>
+</div>
+                                    <div class="reveal hover:scale-[1.02] transition-transform duration-500" style="transition-delay: 0.3s"><div class="group rounded-3xl overflow-hidden bg-bg-card border border-bg-lighter/50 hover:border-accent/50 transition-all duration-500 hover:shadow-glow flex flex-col">
+    <div class="p-8 flex flex-col flex-grow">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-accent text-sm font-bold tracking-wider uppercase">Python / Flask</span>
+                            <a href="https://github.com/Tomm3110/Cocktail-Quizz" target="_blank" class="text-text-secondary hover:text-accent transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </a>
+                    </div>
+
+        <h3 class="text-2xl font-heading font-bold text-text-primary mb-4 group-hover:text-accent transition">
+            Cocktail Quizz
+        </h3>
+
+        <p class="text-text-secondary mb-6 leading-relaxed flex-grow text-sm">
+            Application web interactive développée avec le micro-framework Flask. Le jeu consomme une API REST e...
+        </p>
+
+        <a href="http://localhost:8000/projet/cocktail-quizz" class="inline-flex items-center gap-2 text-text-primary font-bold group-hover:text-accent transition text-sm">
+            Voir plus
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        </a>
+    </div>
+</div>
+</div>
+                                    <div class="reveal hover:scale-[1.02] transition-transform duration-500" style="transition-delay: 0.4s"><div class="group rounded-3xl overflow-hidden bg-bg-card border border-bg-lighter/50 hover:border-accent/50 transition-all duration-500 hover:shadow-glow flex flex-col">
+    <div class="p-8 flex flex-col flex-grow">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-accent text-sm font-bold tracking-wider uppercase">Java / Laravel</span>
+                            <a href="https://github.com/Tomm3110/LenSymphony" target="_blank" class="text-text-secondary hover:text-accent transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </a>
+                    </div>
+
+        <h3 class="text-2xl font-heading font-bold text-text-primary mb-4 group-hover:text-accent transition">
+            Instrument Virtuel Java
+        </h3>
+
+        <p class="text-text-secondary mb-6 leading-relaxed flex-grow text-sm">
+            Conception d&#039;un instrument de musique virtuel en Java. Ce projet a nécessité une forte maîtrise de l...
+        </p>
+
+        <a href="http://localhost:8000/projet/instrument-virtuel-java" class="inline-flex items-center gap-2 text-text-primary font-bold group-hover:text-accent transition text-sm">
+            Voir plus
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        </a>
+    </div>
+</div>
+</div>
+                                    <div class="reveal hover:scale-[1.02] transition-transform duration-500" style="transition-delay: 0.5s"><div class="group rounded-3xl overflow-hidden bg-bg-card border border-bg-lighter/50 hover:border-accent/50 transition-all duration-500 hover:shadow-glow flex flex-col">
+    <div class="p-8 flex flex-col flex-grow">
+        <div class="flex justify-between items-center mb-6">
+            <span class="text-accent text-sm font-bold tracking-wider uppercase">HTML / CSS</span>
+                            <a href="https://github.com/Tomm3110/Site_de_mariage" target="_blank" class="text-text-secondary hover:text-accent transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </a>
+                    </div>
+
+        <h3 class="text-2xl font-heading font-bold text-text-primary mb-4 group-hover:text-accent transition">
+            Site Vitrine de mariage
+        </h3>
+
+        <p class="text-text-secondary mb-6 leading-relaxed flex-grow text-sm">
+            Réalisation d&#039;un site web statique responsive. Utilisation pure de HTML5 et CSS3 pour structurer le...
+        </p>
+
+        <a href="http://localhost:8000/projet/site-vitrine-de-mariage" class="inline-flex items-center gap-2 text-text-primary font-bold group-hover:text-accent transition text-sm">
+            Voir plus
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+        </a>
+    </div>
+</div>
+</div>
+                            </div>
+        </section>
+
+        
+        <section id="contact" class="py-40 px-6 text-center relative overflow-hidden">
+            <div class="absolute bottom-0 left-1/3 -translate-x-1/2 translate-y-1/3 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] -z-10 animate-float"></div>
+            <div class="absolute top-0 right-0 w-[300px] h-[300px] bg-purple-600/10 rounded-full blur-[100px] -z-10 animate-float-delayed"></div>
+            <h2 class="reveal text-4xl md:text-7xl font-heading font-black text-text-primary mb-10">Envie de collaborer ?</h2>
+            <p class="reveal delay-100 text-text-secondary text-xl max-w-2xl mx-auto mb-12 leading-relaxed">Je suis toujours ouvert aux discussions sur de nouveaux projets, stages ou opportunités.</p>
+            <div class="reveal delay-200">
+                <a href="mailto:tonemail@exemple.com" class="inline-block relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-accent to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative bg-bg-main ring-1 ring-bg-lighter/20 text-text-primary hover:text-white px-10 py-5 rounded-full font-bold transition flex items-center gap-3 overflow-hidden group-hover:bg-accent">
+                        <span>Me contacter</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:rotate-45 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    
+    <div id="skill-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-bg-main/90 backdrop-blur-md transition-opacity opacity-0" id="modal-overlay" onclick="closeModal()"></div>
+        <div class="relative w-full max-w-md p-1 transition-all duration-300 transform scale-95 opacity-0 z-10" id="modal-content">
+            <div class="bg-bg-card border border-bg-lighter/50 rounded-3xl shadow-2xl p-8 relative overflow-hidden">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-text-secondary hover:text-white transition bg-bg-lighter/30 p-2 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                <div class="flex items-center gap-5 mb-6">
+                    <div class="w-16 h-16 bg-white p-2 rounded-2xl flex items-center justify-center shadow-lg shadow-accent/10">
+                        <img id="modal-img" src="" alt="" class="w-full h-full object-contain">
+                    </div>
+                    <h3 id="modal-title" class="text-2xl font-heading font-bold text-text-primary"></h3>
+                </div>
+                <p id="modal-desc" class="text-text-secondary leading-relaxed text-base"></p>
+                <div class="mt-8 pt-6 border-t border-bg-lighter/30 flex justify-end">
+                    <button onclick="closeModal()" class="text-sm font-bold text-accent hover:text-white transition uppercase tracking-wider">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="exp-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-bg-main/90 backdrop-blur-md transition-opacity opacity-0" id="exp-overlay" onclick="closeExpModal()"></div>
+        <div class="relative w-full max-w-lg transition-all duration-300 transform scale-95 opacity-0 z-10" id="exp-content">
+            <div class="bg-bg-card border border-bg-lighter/50 rounded-3xl shadow-2xl p-8 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent to-purple-600"></div>
+                <button onclick="closeExpModal()" class="absolute top-4 right-4 text-text-secondary hover:text-white transition bg-bg-lighter/30 p-2 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+                <div class="mb-6">
+                    <h3 id="exp-role" class="text-2xl font-heading font-bold text-text-primary mb-1"></h3>
+                    <p class="text-lg text-accent font-medium flex items-center gap-2">@ <span id="exp-company"></span></p>
+                    <span id="exp-date" class="text-xs text-text-secondary uppercase tracking-wider font-bold mt-2 block bg-bg-lighter/20 inline-block px-3 py-1 rounded-full"></span>
+                </div>
+                <div id="exp-desc" class="text-text-secondary leading-relaxed text-base space-y-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ul>li]:mb-1"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        const heroSection = document.getElementById('hero-section');
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorGlow = document.getElementById('cursor-glow');
+        const spotlight = document.getElementById('mouse-spotlight');
+
+        const moveCursor = (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(() => {
+                cursorGlow.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+            });
+        };
+
+        if(heroSection && cursorDot && cursorGlow) {
+            heroSection.addEventListener('mouseenter', () => {
+                cursorDot.classList.remove('cursor-hidden');
+                cursorGlow.classList.remove('cursor-hidden');
+                document.addEventListener('mousemove', moveCursor);
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                cursorDot.classList.add('cursor-hidden');
+                cursorGlow.classList.add('cursor-hidden');
+                document.removeEventListener('mousemove', moveCursor);
+            });
+        }
+
+        if(spotlight) {
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX;
+                const y = e.clientY;
+                spotlight.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(168, 85, 247, 0.15), transparent 40%)`;
+            });
+        }
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 50;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.location.hash) {
+                document.documentElement.style.scrollBehavior = 'auto';
+                const element = document.querySelector(window.location.hash);
+                if (element) element.scrollIntoView({ behavior: 'auto', block: 'start' });
+                reveal();
+                setTimeout(() => { document.documentElement.style.scrollBehavior = 'smooth'; }, 100);
+            } else {
+                reveal();
+            }
+        });
+
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            const progressBar = document.getElementById("scroll-progress");
+            if(progressBar) progressBar.style.width = scrolled + "%";
+        };
+
+        const modal = document.getElementById('skill-modal');
+        const overlay = document.getElementById('modal-overlay');
+        const content = document.getElementById('modal-content');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalImg = document.getElementById('modal-img');
+
+        function openModal(title, desc, logo) {
+            modalTitle.innerText = title;
+            modalDesc.innerText = desc;
+            modalImg.src = logo;
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                overlay.classList.remove('opacity-0');
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            });
+        }
+        function closeModal() {
+            overlay.classList.add('opacity-0');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        const expModal = document.getElementById('exp-modal');
+        const expOverlay = document.getElementById('exp-overlay');
+        const expContent = document.getElementById('exp-content');
+        const labelRole = document.getElementById('exp-role');
+        const labelCompany = document.getElementById('exp-company');
+        const labelDate = document.getElementById('exp-date');
+        const boxDesc = document.getElementById('exp-desc');
+
+        function openExpModal(role, company, date, descId) {
+            labelRole.innerText = role;
+            labelCompany.innerText = company;
+            labelDate.innerText = date;
+            const hiddenDiv = document.getElementById(descId);
+            if(hiddenDiv) boxDesc.innerHTML = hiddenDiv.innerHTML;
+            expModal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                expOverlay.classList.remove('opacity-0');
+                expContent.classList.remove('scale-95', 'opacity-0');
+                expContent.classList.add('scale-100', 'opacity-100');
+            });
+        }
+        function closeExpModal() {
+            expOverlay.classList.add('opacity-0');
+            expContent.classList.remove('scale-100', 'opacity-100');
+            expContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => { expModal.classList.add('hidden'); }, 300);
+        }
+    </script>
+</main>
+
+<footer class="bg-bg-card py-12 mt-24 border-t border-bg-lighter/30 text-center relative overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10"></div>
+
+    <a href="http://localhost:8000" class="font-heading text-2xl font-bold text-text-primary tracking-wider hover:text-accent transition">TF</a>
+
+    <div class="flex justify-center gap-6 mt-6 mb-8">
+        <a href="https://github.com/Tomm3110" target="_blank" class="text-text-secondary hover:text-accent transition transform hover:scale-110">GitHub</a>
+        <a href="https://www.linkedin.com/in/tom-firmin-1ab18a29b/" target="_blank" class="text-text-secondary hover:text-accent transition transform hover:scale-110">LinkedIn</a>
+    </div>
+
+    <p class="text-sm opacity-60">
+        developed_with Laravel & Tailwind · Designed by Tom FIRMIN · © 2026
+    </p>
+</footer>
+
+</body>
+</html>
